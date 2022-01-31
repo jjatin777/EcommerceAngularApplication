@@ -1,0 +1,65 @@
+<body>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-2" ></div>
+        <div class="col-sm-1" >Search by:</div>
+        <div class="col-lg-2">
+          <input size="80" type="text"
+                [(ngModel)]="listFilter" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-2" >
+        <div class="col" *ngFor="let product of filteredProducts">
+          <div class="card shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="80%" height="225" src ={{product.imageUrl}} role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <!-- <rect width="100%" height="100%" fill="#55595c"></rect>
+              <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text> -->
+            <!-- <img class="card-img-top" 
+                  height:170px 
+                  max-width:500px 
+                  src= {{product.imageUrl}} alt="Card image cap"> -->
+
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text">{{product.productName}} </p>
+                <p>{{ product.productCode }}  </p>
+                <p>{{ product.price | currency:"USD":"symbol":"1.2-2" }}</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a [routerLink]="['/Main/Products', product.id]">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                      View
+                    </button>
+                  </a>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                </div>
+                <small class="text-muted">{{product.releaseDate}}</small>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage"
+       class="alert alert-danger">
+    Error: {{ errorMessage }}
+  </div>
+</body>
+
+  
+    
+    
+    
+         
+      
+    
